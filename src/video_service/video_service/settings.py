@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
-import secrets
+
+from video_service import secret_keys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secrets.SECRET_KEY
+SECRET_KEY = secret_keys.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'memberships'
+    'memberships',
+    'courses'
 ]
 
 MIDDLEWARE = [
@@ -135,9 +137,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 
 if DEBUG:
-    STRIPE_PUBLISHABLE_KEY = secrets.STRIPE_PUBLISHABLE_KEY
-    STRIPE_SECRET_KEY = secrets.STRIPE_SECRET_KEY
+    STRIPE_PUBLISHABLE_KEY = secret_keys.STRIPE_PUBLISHABLE_KEY
+    STRIPE_SECRET_KEY = secret_keys.STRIPE_SECRET_KEY
 else:
     # live key
-    STRIPE_PUBLISHABLE_KEY = secrets.STRIPE_PUBLISHABLE_KEY
-    STRIPE_SECRET_KEY = secrets.STRIPE_SECRET_KEY
+    STRIPE_PUBLISHABLE_KEY = secret_keys.STRIPE_PUBLISHABLE_KEY
+    STRIPE_SECRET_KEY = secret_keys.STRIPE_SECRET_KEY
