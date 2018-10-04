@@ -16,6 +16,10 @@ class Course(models.Model):
     def get_absolute_url(self):
         return reverse('courses:detail', kwargs={'slug': self.slug})
 
+    @property
+    def lessons(self):
+        return self.lesson_set.all().order_by('position')
+
 class Lesson(models.Model):
     slug = models.SlugField()
     title = models.CharField(max_length=120)
@@ -28,3 +32,7 @@ class Lesson(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('courses:lesson-detail', kwargs={'course_slug': self.course.slug,
+                                                        'lesson_slug': self.slug})
