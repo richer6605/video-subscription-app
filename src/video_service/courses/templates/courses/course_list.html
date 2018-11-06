@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+{% extends 'courses/base.html' %}
+
+{% block title %}Course List{% endblock %}
+
+{% block content %}
+	<h1>Course List</h1>
+	{% for object in object_list%}
+		<a href="{{ object.get_absolute_url }}">{{ object }}</a>
+	{% endfor %}
+{% endblock%}
+{# <!DOCTYPE html>
 <html>
 <head>
 	<title>Course List</title>
@@ -9,4 +19,4 @@
 		<a href="{{ object.get_absolute_url }}">{{ object }}</a>
 	{% endfor %}
 </body>
-</html>
+</html> #}

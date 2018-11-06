@@ -1,9 +1,26 @@
-<!DOCTYPE html>
+{% extends 'courses/base.html' %}
+
+{% block title %}Lesson Detail Page{% endblock %}
+
+{% block content %}
+	{% if object is not None %}
+		<p>{{ object.title }}</p>
+		<p>{{ object.description }}</p>
+	{% else %}
+		<p>Upgrade membership</p>
+	{% endif %}
+{% endblock%}
+{# <!DOCTYPE html>
 <html>
 	<head>
 		<title>Lesson Detail Page</title>
 	</head>
 	<body>
-		<p>{{ object.title }}</p>
+		{% if object is not None %}
+			<p>{{ object.title }}</p>
+			<p>{{ object.description }}</p>
+		{% else %}
+			<p>Upgrade membership</p>
+		{% endif %}
 	</body>
-</html>
+</html> #}

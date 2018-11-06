@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+{% extends 'courses/base.html' %}
+
+{% block title %}Course Detail Page{% endblock %}
+
+{% block content %}
+    {% for lesson in object.lessons %}
+        <p>
+            <a href="{{ lesson.get_absolute_url }}">{{ lesson.slug }}</a>
+        </p>
+    {% endfor %}
+{% endblock%}
+{# <!DOCTYPE html>
 <html>
     <head>
         <title>Course Detail Page</title>
@@ -11,3 +22,4 @@
         {% endfor %}
     </body>
 </html>
+ #}
